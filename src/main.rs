@@ -33,9 +33,21 @@ fn main() {
             let command = pdbsequence(pdbfile, seq.clone()).unwrap();
             println!("The protein sequence is as follows: {:?}", command);
         }
-        Commands::EucledianComparative { pdbfile, chain, residue1, residue2 } => {
+        Commands::EucledianComparative {
+            pdbfile,
+            chain,
+            residue1,
+            residue2,
+        } => {
             let command = euclediancomparativetwo(pdbfile, chain, residue1, residue2).unwrap();
-            println!("The eucledian distance between to given coordinates of the same chain is {:?}", command);
+            println!(
+                "The eucledian distance between to given coordinates of the same chain is {:?}",
+                command
+            );
+        }
+        Commands::EucledianAll { pdbfile, chain } => {
+           let command = eucledianall(pdbfile, chain).unwrap();
+           println!("The vector containing the eucleadian distance for those chain atoms are: {:?}", command);
         }
     }
 }
@@ -155,9 +167,7 @@ fn euclediancomparativetwo(
                 coordinate2: mutline[7].parse::<f32>().unwrap(),
                 coordinate3: mutline[8].parse::<f32>().unwrap(),
             });
-        } else if mutline[4] == chain
-            && mutline[5].parse::<usize>().unwrap() == residue2_arg
-        {
+        } else if mutline[4] == chain && mutline[5].parse::<usize>().unwrap() == residue2_arg {
             comparative2.push(Comprativedrive {
                 chain: mutline[4].to_string(),
                 residue: mutline[5].parse::<usize>().unwrap(),
@@ -174,9 +184,42 @@ fn euclediancomparativetwo(
             let eucledian1 = (i.coordinate1 - j.coordinate2).powi(2);
             let eucledian2 = (i.coordinate2 - j.coordinate2).powi(2);
             let eucledian3 = (i.coordinate3 - j.coordinate3).powi(2);
-            coordinate_euclidean += (eucledian1+eucledian2+eucledian3).sqrt();
+            coordinate_euclidean += (eucledian1 + eucledian2 + eucledian3).sqrt();
         }
     }
 
     Ok(coordinate_euclidean)
+}
+
+fn eucledianall(path: &str, chain: &str) -> Result<Vec<f32>, Box<dyn Error>> {
+    let pathopen = File::open(path).expect("file not present");
+    let pathread = BufReader::new(pathopen);
+    let mut coordinate: Vec<(f32, f32, f32)> = Vec::new();
+    for i in pathread.lines() {
+        let line = i.expect("file not found");
+        let mutline = line
+            .split("\t")
+            .filter(|x| x.is_empty())
+            .collect::<Vec<_>>();
+        if mutline[4] == chain {
+            let tuplevec = (
+                mutline[6].parse::<f32>().unwrap(),
+                mutline[7].parse::<f32>().unwrap(),
+                mutline[8].parse::<f32>().unwrap(),
+            );
+            coordinate.push(tuplevec);
+        }
+    }
+
+    let mut coordinate_euclidean_all: Vec<f32> = Vec::new();
+    for i in 0..coordinate.len()-1{
+      let mut euclidean = 0.0f32;
+       let eucledian1 = (coordinate[i].0 - coordinate[i+1].0).powi(2);
+            let eucledian2 = (coordinate[i].1 - coordinate[i+1].1).powi(2);
+            let eucledian3 = (coordinate[i].2 - coordinate[i+1].2).powi(2);
+            euclidean += (eucledian1 + eucledian2 + eucledian3).sqrt();
+            coordinate_euclidean_all.push(euclidean)
+    }
+
+    Ok(coordinate_euclidean_all)
 }

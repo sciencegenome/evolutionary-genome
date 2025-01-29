@@ -32,5 +32,12 @@ pub enum Commands {
      residue1: String,
      /// provide the resiude 2
      residue2: String,
+    },
+    /// calculates the euclidean distance for all chain atoms
+    EucledianAll {
+     /// provide the pdb file
+     pdbfile: String,
+     /// provide the chain
+     chain: String,
     }
 }

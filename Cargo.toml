@@ -1,5 +1,5 @@
 [package]
-name = "evolutionary-genome"
+name = "evolutionary-pdb"
 version = "0.1.0"
 edition = "2021"
 
