@@ -1,4 +1,4 @@
-# evolutionary-pdb-proteome
+# pdb-euclidean-proteome
  - rust evolutionary proteome
  - it reports only chains with atoms for the id and sequence and euclidean distance for all irrespective of chain and atoms. 
  - Euclidean distance chain comparsion for two point coordinate protein. 
