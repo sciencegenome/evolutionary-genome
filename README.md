@@ -9,10 +9,10 @@
   cargo build 
  ```
  ```
- ➜  evolutionary-proteome git:(main) ✗ ./target/debug/evolutionary-pdb -h
+ ➜  evolutionary-proteome git:(main) ✗ ./target/debug/pdb-proteome -h
  set of evolutionary analysis for proteome
 
- Usage: evolutionary-pdb <COMMAND>
+ Usage: pdb-proteome <COMMAND>
 
  Commands:
   pdb-id
@@ -24,18 +24,19 @@
  Options:
   -h, --help     Print help
   -V, --version  Print version
+
  ```
 
  ```
  ➜  evolutionary-proteome git:(main) ✗ 
-          ./target/debug/evolutionary-pdb euclidean-comparative sample.pdb A 10 10 N CA
+          ./target/debug/pdb-proteome euclidean-comparative sample.pdb A 10 10 N CA
  The eucledian distance between to given coordinates of the same chain is 1.4656264
  ➜  evolutionary-proteome git:(main) ✗ 
-            ./target/debug/evolutionary-pdb euclidean-comparative sample.pdb A 1 1 N CA
+            ./target/debug/pdb-proteome euclidean-comparative sample.pdb A 1 1 N CA
  The eucledian distance between to given coordinates of the same chain is 1.4909409
  ```
  ```
- ➜  evolutionary-proteome git:(main) ✗ ./target/debug/evolutionary-pdb euclidean-all sample.pdb A
+ ➜  evolutionary-proteome git:(main) ✗ ./target/debug/pdb-proteome euclidean-all sample.pdb A
   The vector containing the eucleadian distance for those chain atoms are: 
    [1.4909409, 1.5401275, 1.254727, 3.479588, 1.4994173, 1.4884146 ...]
 
