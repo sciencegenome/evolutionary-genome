@@ -36,7 +36,7 @@ fn main() {
             let command = pdbsequence(pdbfile);
             println!("The protein sequence is as follows: {:?}", command);
         }
-        Commands::EucledianComparative {
+        Commands::EuclideanComparative {
             pdbfile,
             chain,
             residue1,
@@ -51,7 +51,7 @@ fn main() {
                 command
             );
         }
-        Commands::EucledianAll { pdbfile, chain } => {
+        Commands::EuclideanAll { pdbfile, chain } => {
             let command = eucledianall(pdbfile, chain).unwrap();
             println!(
                 "The vector containing the eucleadian distance for those chain atoms are: {:?}",

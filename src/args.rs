@@ -23,7 +23,7 @@ pub enum Commands {
        pdbfile: String,
     },
     /// calculate the euclidean distance bettwen two chain coordinates
-    EucledianComparative{
+    EuclideanComparative{
      /// provide the pdb file
      pdbfile: String,
      /// provide the chain to be selected
@@ -38,7 +38,7 @@ pub enum Commands {
      atom2: String,
     },
     /// calculates the euclidean distance for all chain atoms
-    EucledianAll {
+    EuclideanAll {
      /// provide the pdb file
      pdbfile: String,
      /// provide the chain

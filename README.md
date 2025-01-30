@@ -1,8 +1,9 @@
 # evolutionary-pdb-proteome
  - rust evolutionary proteome
- - eucleadian chain comparsion for two point coordinate protein. 
- - eucledian chain coordinate comparsion for all protein atoms of the chain. 
- - knn implementation for machine learning. 
+ - it reports only chains with atoms for the id and sequence and euclidean distance for all irrespective of chain and atoms. 
+ - Euclidean distance chain comparsion for two point coordinate protein. 
+ - Euclidean distance chain coordinate comparsion for all protein atoms of the chain. 
+ - please see the last commit message and if it says compiled binary then it is completed or else still in development version.
 
  ```
   cargo build 
@@ -16,26 +17,25 @@
  Commands:
   pdb-id
   pdb-sequence           extract the sequence of the pdf file
-  eucledian-comparative  calculate the euclidean distance bettwen two chain coordinates
-  eucledian-all          calculates the euclidean distance for all chain atoms
+  euclidean-comparative  calculate the euclidean distance bettwen two chain coordinates
+  euclidean-all          calculates the euclidean distance for all chain atoms
   help                   Print this message or the help of the given subcommand(s)
 
  Options:
   -h, --help     Print help
   -V, --version  Print version
-
  ```
 
  ```
  ➜  evolutionary-proteome git:(main) ✗ 
-          ./target/debug/evolutionary-pdb eucledian-comparative sample.pdb A 10 10 N CA
+          ./target/debug/evolutionary-pdb euclidean-comparative sample.pdb A 10 10 N CA
  The eucledian distance between to given coordinates of the same chain is 1.4656264
  ➜  evolutionary-proteome git:(main) ✗ 
-            ./target/debug/evolutionary-pdb eucledian-comparative sample.pdb A 1 1 N CA
+            ./target/debug/evolutionary-pdb euclidean-comparative sample.pdb A 1 1 N CA
  The eucledian distance between to given coordinates of the same chain is 1.4909409
  ```
  ```
- ➜  evolutionary-proteome git:(main) ✗ ./target/debug/evolutionary-pdb eucledian-all sample.pdb A
+ ➜  evolutionary-proteome git:(main) ✗ ./target/debug/evolutionary-pdb euclidean-all sample.pdb A
   The vector containing the eucleadian distance for those chain atoms are: 
    [1.4909409, 1.5401275, 1.254727, 3.479588, 1.4994173, 1.4884146 ...]
 
