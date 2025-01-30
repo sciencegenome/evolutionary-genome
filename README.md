@@ -1,4 +1,4 @@
-# evolutionary-pdb-proteome
+# pdb-euclidean-proteome
  - rust evolutionary proteome
  - eucleadian chain comparsion for two point coordinate protein. 
  - eucledian chain coordinate comparsion for all protein atoms of the chain. 
